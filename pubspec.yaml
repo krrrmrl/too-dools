@@ -73,7 +73,29 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: IngridDarling
+      fonts:
+        - asset: assets/fonts/IngridDarling-Regular.ttf
+
+    - family: InriaSerif
+      fonts:
+        - asset: assets/fonts/InriaSerif-Regular.ttf
+        - asset: assets/fonts/InriaSerif-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/InriaSerif-Italic.ttf
+          style: italic
+        - asset: assets/fonts/InriaSerif-BoldItalic.ttf
+          weight: 700
+          style: italic
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter-Italic.ttf
+          style: italic
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
