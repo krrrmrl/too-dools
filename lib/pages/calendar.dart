@@ -16,6 +16,28 @@ class CalendarPage extends StatelessWidget {
         backgroundColor: Color(0x00f7f7f4),
       ),
       body: Center(child: Text('Calendar')),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.check_box),
+            label: 'To-do List',
+          ),
+        ],
+        currentIndex: 0, // Set the current index to the Calendar page
+        selectedItemColor: Color(0x00D17E7E),
+        onTap: (index) {
+          // Handle navigation based on the tapped index
+          if (index == 0) {
+            // Already on Calendar page, do nothing
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/todo');
+          }
+        },
+      ),
     );
   }
 }
