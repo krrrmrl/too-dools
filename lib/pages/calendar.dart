@@ -9,11 +9,11 @@ class CalendarPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Calendar',
-          style: TextStyle(color: Colors.black, fontSize: 40),
+          style: TextStyle(color: Colors.black, fontSize: 40, fontFamily: 'IngridDarling'),
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Color(0x00f7f7f4),
+        backgroundColor: Color(0xFFf7f7f4),
       ),
       body: Center(child: Text('Calendar')),
       bottomNavigationBar: BottomNavigationBar(
@@ -28,7 +28,7 @@ class CalendarPage extends StatelessWidget {
           ),
         ],
         currentIndex: 0, // Set the current index to the Calendar page
-        selectedItemColor: Color(0x00D17E7E),
+        selectedItemColor: Color(0xFFD17E7E),
         onTap: (index) {
           // Handle navigation based on the tapped index
           if (index == 0) {
