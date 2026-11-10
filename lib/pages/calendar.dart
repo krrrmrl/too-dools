@@ -16,20 +16,6 @@ class _CalendarTableState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Too-Dools',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
-            fontFamily: 'IngridDarling',
-            height: 1.2,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0.0,
-        backgroundColor: Color(0xFFf7f7f4),
-      ),
       body: TableCalendar(
         focusedDay: _focusedDay,
         firstDay: DateTime.utc(1900, 01, 01),
