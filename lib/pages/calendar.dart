@@ -163,7 +163,9 @@ class _CalendarTableState extends State<CalendarPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Add',
-        child: const Icon(Icons.add),
+        backgroundColor: Color(0xFFFFD8E4),
+        shape: CircleBorder(),
+        child: const Icon(Icons.add, color: Color(0xFFD17E7E)),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

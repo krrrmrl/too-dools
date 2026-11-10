@@ -40,7 +40,7 @@ class _AppLayoutState extends State<AppLayout> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         selectedItemColor: Color(0xFFD17E7E),
-        backgroundColor: Color(0xFFf7f7f4),
+        backgroundColor: Color(0xFFFFD8E4),
         onTap: (index) {
           setState(() {
             _currentIndex = index;
