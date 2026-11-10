@@ -8,14 +8,25 @@ class CalendarPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Calendar',
-          style: TextStyle(color: Colors.black, fontSize: 40, fontFamily: 'IngridDarling'),
+          'Too-Dools',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 30,
+            fontFamily: 'IngridDarling',
+            height: 1.2,
+          ),
         ),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Color(0xFFf7f7f4),
       ),
       body: Center(child: Text('Calendar')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Add',
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -29,6 +40,7 @@ class CalendarPage extends StatelessWidget {
         ],
         currentIndex: 0, // Set the current index to the Calendar page
         selectedItemColor: Color(0xFFD17E7E),
+        backgroundColor: Color(0xFFf7f7f4),
         onTap: (index) {
           // Handle navigation based on the tapped index
           if (index == 0) {
