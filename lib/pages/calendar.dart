@@ -45,29 +45,6 @@ class _CalendarTableState extends State<CalendarPage> {
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Calendar',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.check_box),
-            label: 'To-do List',
-          ),
-        ],
-        currentIndex: 0, // Set the current index to the Calendar page
-        selectedItemColor: Color(0xFFD17E7E),
-        backgroundColor: Color(0xFFf7f7f4),
-        onTap: (index) {
-          // Handle navigation based on the tapped index
-          if (index == 0) {
-            // Already on Calendar page, do nothing
-          } else if (index == 1) {
-            Navigator.pushNamed(context, '/todo');
-          }
-        },
-      ),
     );
   }
 }
