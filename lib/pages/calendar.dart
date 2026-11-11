@@ -47,53 +47,83 @@ class _CalendarTableState extends State<CalendarPage> {
   }
 
   void _showAddEventDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Add Event / Task'),
-        content: TextField(
-          controller: _eventController,
-          autofocus: true,
-          decoration: const InputDecoration(
-            hintText: 'Enter task description...',
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              _eventController.clear();
-              Navigator.pop(context);
-            },
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (_eventController.text.trim().isEmpty) return;
-
-              final selectedDate = _selectedDay ?? _focusedDay;
-              final key = _normalizeDate(selectedDate);
-
-              setState(() {
-                final newTask = Task(
-                  title: _eventController.text.trim(),
-                  date: key,
-                  isCompleted: false,
-                );
-
-                if (_events[key] != null) {
-                  _events[key]!.add(newTask);
-                } else {
-                  _events[key] = [newTask];
-                }
-              });
-
-              _eventController.clear();
-              Navigator.pop(context);
-            },
-            child: const Text('Add'),
-          ),
-        ],
+    _eventController.clear();
+    showModalBottomSheet(
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
       ),
+      backgroundColor: Color(0xFFFFD8E4),
+      context: context,
+      builder: (context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.6,
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Text(
+                    'Add Event',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.check),
+                    onPressed: () {
+                      if (_eventController.text.trim().isEmpty) return;
+
+                      final selectedDate = _selectedDay ?? _focusedDay;
+                      final key = _normalizeDate(selectedDate);
+
+                      setState(() {
+                        final newTask = Task(
+                          title: _eventController.text.trim(),
+                          date: key,
+                          isCompleted: false,
+                        );
+                        if (_events[key] != null) {
+                          _events[key]!.add(newTask);
+                        } else {
+                          _events[key] = [newTask];
+                        }
+                      });
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              TextField(
+                controller: _eventController,
+                decoration: InputDecoration(
+                  labelText: 'Event Name',
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Color(0xFFD17E7E)),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 

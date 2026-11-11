@@ -127,91 +127,91 @@ class _TodoListState extends State<TodoPage> {
         return StatefulBuilder(
           builder: (context, setSheetState) {
             return Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.close),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    Text(
-                      'Add Task',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.check),
-                      onPressed: () {
-                        if (_titleController.text.trim().isEmpty) return;
-                        setState(() {
-                          _tasks.add(_titleController.text.trim());
-                          _done.add(false);
-                          _due.add(_pickedDate);
-                        });
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                TextField(
-                  controller: _titleController,
-                  decoration: InputDecoration(
-                    labelText: 'Task Name',
-                    filled: true,
-                    fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15), 
-                      borderSide: BorderSide(color: Color(0xFFD17E7E))
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                ListTile(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  tileColor: Colors.white,
-                  title: Text(' ${_pickedDate != null ? DateFormat('dd MMM yyyy').format(_pickedDate!) : 'No due date'}'),
-                  onTap: () async {
-                    final picked = await showDatePicker(
-                      context: context,
-                      initialDate: _pickedDate ?? DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    );
-                    if (picked != null) {
-                      setSheetState(() {
-                        _pickedDate = picked;
-                      });
-                    }
-                  },
-                  trailing: _pickedDate != null
-                    ? IconButton(
+              height: MediaQuery.of(context).size.height * 0.6,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
                         icon: Icon(Icons.close),
                         onPressed: () {
-                          setSheetState(() {
-                            _pickedDate = null;
-                          });
+                          Navigator.pop(context);
                         },
-                      )
-                    : null,
-                )
-              ],
-            ),
+                      ),
+                      Text(
+                        'Add Task',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.check),
+                        onPressed: () {
+                          if (_titleController.text.trim().isEmpty) return;
+                          setState(() {
+                            _tasks.add(_titleController.text.trim());
+                            _done.add(false);
+                            _due.add(_pickedDate);
+                          });
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  TextField(
+                    controller: _titleController,
+                    decoration: InputDecoration(
+                      labelText: 'Task Name',
+                      filled: true,
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15), 
+                        borderSide: BorderSide(color: Color(0xFFD17E7E))
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  ListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    tileColor: Colors.white,
+                    title: Text(' ${_pickedDate != null ? DateFormat('dd MMM yyyy').format(_pickedDate!) : 'No due date'}'),
+                    onTap: () async {
+                      final picked = await showDatePicker(
+                        context: context,
+                        initialDate: _pickedDate ?? DateTime.now(),
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2100),
+                      );
+                      if (picked != null) {
+                        setSheetState(() {
+                          _pickedDate = picked;
+                        });
+                      }
+                    },
+                    trailing: _pickedDate != null
+                      ? IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () {
+                            setSheetState(() {
+                              _pickedDate = null;
+                            });
+                          },
+                        )
+                      : null,
+                  )
+                ],
+              ),
             );
           },
         );
