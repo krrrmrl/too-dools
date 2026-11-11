@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:too_dools/pages/layout.dart';
 
-void main() {
+// import 'package:too_dools/services/notif_service.dart';
+
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await NotificationService.init();
   runApp(const MyApp());
 }
 
