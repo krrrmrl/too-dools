@@ -11,25 +11,10 @@ class TodoPage extends StatefulWidget{
 
 class _TodoListState extends State<TodoPage> {
   final List<bool> _done = [
-    false, 
-    false, 
-    false, 
-    false, 
-    false,
   ];
   final List<String> _tasks = [
-    'Task 1',
-    'Task 2',
-    'Task 3',
-    'Task 4',
-    'Task 5',
   ];
   final List<DateTime?> _due = [
-    DateTime(2026, 11, 14),
-    null,
-    DateTime(2026, 11, 12),
-    null,
-    DateTime(2026, 11, 13),
   ];
 
   final TextEditingController _titleController = TextEditingController();
@@ -38,30 +23,34 @@ class _TodoListState extends State<TodoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          ExpansionTile(
-            initiallyExpanded: true,
-            shape: Border(),
-            title: Text('No due date', style: TextStyle(fontSize: 13)),
-            children: [
-              for (int i = 0; i < _tasks.length; i++)
-                if (_due[i] == null)
-                  _buildCard(i),
-            ],
-          ),
-          for (final d in _buildDueList())
-            ExpansionTile(
-              initiallyExpanded: true,
-              shape: Border(),
-              title: Text(DateFormat('dd MMM yyyy').format(d), style: TextStyle(fontSize: 13)),
+      body: Expanded(
+        child: _due.isEmpty
+            ? Center(child: Text('No tasks available'))
+            : ListView(
               children: [
-                for (int i = 0; i < _tasks.length; i++)
-                  if (_due[i] != null && isSameDay(_due[i], d))
-                  _buildCard(i),
-            ],
-          ),
-        ],
+                ExpansionTile(
+                  initiallyExpanded: true,
+                  shape: Border(),
+                  title: Text('No due date', style: TextStyle(fontSize: 13)),
+                  children: [
+                    for (int i = 0; i < _tasks.length; i++)
+                      if (_due[i] == null)
+                        _buildCard(i),
+                  ],
+                ),
+                for (final d in _buildDueList())
+                  ExpansionTile(
+                    initiallyExpanded: true,
+                    shape: Border(),
+                    title: Text(DateFormat('dd MMM yyyy').format(d), style: TextStyle(fontSize: 13)),
+                    children: [
+                      for (int i = 0; i < _tasks.length; i++)
+                        if (_due[i] != null && isSameDay(_due[i], d))
+                          _buildCard(i),
+                  ],
+                ),
+              ],
+            ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
