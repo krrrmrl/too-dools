@@ -32,7 +32,7 @@ class _AppLayoutState extends State<AppLayout> {
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Color(0xFFf7f7f4),
+        backgroundColor: Color(0xFFFFD8E4),
       ),
 
       body: _pages[_currentIndex],
