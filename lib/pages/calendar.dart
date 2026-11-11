@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:intl/intl.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -128,7 +129,7 @@ class _CalendarTableState extends State<CalendarPage> {
               alignment: Alignment.centerLeft,
               child: Text(
                 _selectedDay != null
-                    ? 'Tasks for ${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year}'
+                    ? 'Tasks for ${DateFormat('dd MMM yyyy').format(_selectedDay!)}'
                     : 'Select a day',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
